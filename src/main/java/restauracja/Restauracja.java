@@ -21,10 +21,26 @@ public class Restauracja {
     }
 
     public double pobierzCalkowityDochod(){
-        return 0;
+        double calkowityDochod = 0;
+
+        for(List<Stolik> stoliki : kelnerkiZeStolikami.values()) {
+            for (Stolik stolik : stoliki) {
+                calkowityDochod += stolik.cenaZamowien;
+            }
+        }
+
+        return calkowityDochod;
     }
 
     public double pobierzDochodKelnerki(String imie) {
-        return 0;
+        double dochod = 0;
+
+        List<Stolik> stolikiKelnerki = this.kelnerkiZeStolikami.get(new Kelnerka(imie));
+
+        for (Stolik stolik : stolikiKelnerki) {
+            dochod += stolik.cenaZamowien;
+        }
+
+        return dochod;
     }
 }
